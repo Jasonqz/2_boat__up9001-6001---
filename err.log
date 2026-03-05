@@ -1,0 +1,1304 @@
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 32, in __GetAllJson
+    res['sensor1'] = self.mysql.FindMaxData1()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 36, in FindMaxData1
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 33, in __GetAllJson
+    res['sensor2'] = self.mysql.FindMaxData2()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 49, in FindMaxData2
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 34, in __GetAllJson
+    res['state'] = self.mysql.FindMaxData3()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 61, in FindMaxData3
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 33, in __GetAllJson
+    res['sensor2'] = self.mysql.FindMaxData2()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 49, in FindMaxData2
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 26, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 34, in __GetAllJson
+    res['state'] = self.mysql.FindMaxData3()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 61, in FindMaxData3
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 33, in __GetAllJson
+    res['sensor2'] = self.mysql.FindMaxData2()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 49, in FindMaxData2
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\manager.py", line 31, in __GetAllJson
+    res['sensor'] = self.mysql.FindMaxData()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat_screen__update _斌\2_boat_screen_\data_mysql.py", line 23, in FindMaxData
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 33, in __GetAllJson
+    res['sensor2'] = self.mysql.FindMaxData2()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\data_mysql.py", line 49, in FindMaxData2
+    data=self.cursor.fetchone()
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 275, in fetchone
+    self._check_executed()
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\pymysql\cursors.py", line 72, in _check_executed
+    raise err.ProgrammingError("execute() first")
+pymysql.err.ProgrammingError: execute() first
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
+ERROR:main:Exception on /update [POST]
+Traceback (most recent call last):
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 2525, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1822, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1820, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\22717\.conda\envs\myenv\Lib\site-packages\flask\app.py", line 1796, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\main.py", line 24, in update
+    result = manager.GetJson(int(data['flag']))   #调用接口
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 24, in GetJson
+    return self.__GetAllJson()
+           ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\22717\OneDrive\桌面\2_boat__update _6.5\2_boat_screen_\manager.py", line 44, in __GetAllJson
+    print(res['sensor1'])
+          ~~~^^^^^^^^^^^
+KeyError: 'sensor1'
