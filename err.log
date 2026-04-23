@@ -1302,3 +1302,5 @@ Traceback (most recent call last):
     print(res['sensor1'])
           ~~~^^^^^^^^^^^
 KeyError: 'sensor1'
+ERROR:root:÷¥––delete from ww ß∞‹
+ERROR:root:÷¥––truncate table ww ß∞‹

@@ -29,11 +29,11 @@ class Manager:
         print(res)
         data2 = self.mysql.FindMaxData()
         print("所有数据：", data2)
-        res['sensor'] = (data2[0:12])
-        res['sensor1'] = (data2[12:24])
-        res['state'] = (data2[24:25])
-        res['sensor2'] = (data2[25:37])
-        res['sensor3'] = (data2[37:49])
+        res['sensor'] = (data2[0:12])   # 9001船的水质数据
+        res['sensor1'] = (data2[12:24]) # 9001船的气象数据
+        res['state'] = (data2[24:25])  # 9001船的状态数据
+        res['sensor2'] = (data2[25:37]) # 6001船的水质数据
+        res['sensor3'] = (data2[37:49]) # 6001船的气象数据
 
         print("*" * 25 + "传感器数据" + "*" * 25)
         print("水质数据(9001)", res['sensor'])

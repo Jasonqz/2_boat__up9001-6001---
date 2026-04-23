@@ -1,3 +1,6 @@
+from typing import Any
+
+
 from pymysql import TIME
 from mysql import Mysql
 import pandas as pd
@@ -18,7 +21,7 @@ class DataMysql(Mysql):
 
     '''读取hours_900_600的数据'''
     def FindMaxData(self):
-        sql = "SELECT * FROM hours_900_600 ORDER BY id DESC LIMIT 1;"
+        sql = "SELECT * FROM hours_9001_6001 ORDER BY id DESC LIMIT 1;"
         self.SqlExecute(sql)
         if None == self.cursor:
             return [-1 for i in range(len(self.hours_columns)-1)]

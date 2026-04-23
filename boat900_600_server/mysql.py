@@ -21,7 +21,7 @@ bc = logging.basicConfig(filename='./err.log')
 class Mysql:
 
     '''用户名，密码，主机地址'''
-    def __init__(self,host="120.78.234.51", user='Ship_DB', password="Tr708708708", db="ship_db", port=3306, charset = "utf8mb4"):
+    def __init__(self,host="tstit.x3322.net", user='ship_6001', password="ship6001@123", db="ship_db", port=3306, charset = "utf8mb4"):
         #获取基础信息
         self.host = host
         self.user = user
@@ -66,10 +66,10 @@ class Mysql:
         row = self.cursor.fetchone()
         while row is not None:
             if row[0] == name:
-                self.Close()  
+                self.Close()
                 return 1
             row = self.cursor.fetchone()
-        self.Close()  
+        self.Close()
         return 0
 
     '''执行sql语句'''
@@ -99,7 +99,7 @@ class Mysql:
             row = self.cursor.fetchone()
         self.Close()
         return res
-    
+
 
 if __name__== '__main__':
 
@@ -121,7 +121,7 @@ if __name__== '__main__':
     #     mysql.Close()
     # else:
     #     print("创建失败")
-    
+
 
     # #查询表格
     # print("*"*20 + "下一步" + "*"*20)

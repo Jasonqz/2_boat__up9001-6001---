@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import threading
-from data_mysql import DataMysql, DataAir
+from data_mysql import DataMysql,DataAir
 import time
 from mysql import Mysql
 
@@ -9,7 +9,7 @@ from mysql import Mysql
 class Manager():
 
     '''初始化'''
-    def __init__(self, data_mysql=None):
+    def __init__(self,data_mysql=None):
         super(Manager, self).__init__()
 
         # 1.初始化变量
@@ -18,7 +18,7 @@ class Manager():
     '''开炮'''
     def run(self):
         while(1):
-            self.mysql.ReadNewData('yunyang', 'sap_1511', 'sap_2116')
+            self.mysql.ReadNewData('sap_1515','sap_2011','sap_2116','ship_state','ship_6001_state')
             time.sleep(60)
 
 
