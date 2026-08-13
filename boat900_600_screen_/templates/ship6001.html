@@ -1,0 +1,375 @@
+<!-- 屏幕保护大气（6001船屏保） -->
+<div class="protect31" id="protect31">
+    <!-- <span id="greeting" class="flicker">不经一番寒彻骨</span> -->
+</div>
+<!-- 水质数据显示6001 -->
+<div class="protect22" id="protect22">
+    <header style="height: 1.2rem;">
+        <h1>水环境在线监测</h1>
+        <div class="showtime" id="boat6001"></div>
+    </header>
+    <!-- 1.左边视图 -->
+    <section class="mainbox" id=mainbox22>
+        <div class="column" id="sensor">
+            <div class="column2" id="015">
+                <div class="MajorPollutant">
+                    <div class="Pollutant line">
+                        <div class="ChartAQI" id="AQI">
+
+                        </div>
+                        <div class="Pollutant-footer"></div>
+                    </div>
+                    <div class="Pollutant">
+                        <div class="ChartAQI" id="MainPU">
+
+                        </div>
+                        <div class="Pollutant-footer"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 数据展示 -->
+            <div>
+                <div class="box3" id="box3">
+                    <div style="margin-top: 0.8rem;">
+                        <ul>
+                            <li v-for="(item2, index2) in sensor_data2">
+                                <div class="panel" style="padding: 0;height: 2.5rem;">
+                                    <h2 ref="dealsub2"
+                                        style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
+                                        {{objList[index2].symbol }}<span>{{
+                                            objList[index2].name }}</span></h2>
+                                    <div class="chart" style="height: 1.5rem;width: 4.5rem;  margin-top: 0.1rem;">
+                                        <h3 ref="level2"
+                                            style="height: 0.3rem;line-height: 0.3rem;font-size: 0.35rem;  margin-top: 0.3rem;">
+                                            实际值：{{item2}}{{ unit[index2]}}</h3>
+                                        <h4 style="font-size: 0.35rem;" ref="zxc2"> 标准值：{{ std[index2]
+                                            }}{{unit[index2]
+                                            }}</h4>
+                                    </div>
+                                    <div class="panel-footer"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 2.右边视图 -->
+        <div class="column">
+            <!-- 评价模块 -->
+            <div class="row">
+                <div class="pingjia">
+                    <div class="pingjia">
+                        <h1 style="font-size: 0.6rem; margin-top: 0.01rem; ">船号：6001</h1>
+                        <h1 style="font-size: 0.6rem; margin-top: 0.01rem; ">三峡库区：云阳流域</h1>
+                        <h1 v-if="state_data==-1" style="font-size: 0.6rem; margin-top: 0.01rem; ">航行状态：船在港</h1>
+                        <h1 v-else style="font-size: 0.6rem; margin-top: 0.01rem; ">航行状态：航行中
+                        </h1>
+                        <h1 style="font-size: 0.6rem; margin-top: 0.01rem;">测控范围：6532平方公里测控
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <!-- tips模块 -->
+            <div class="row">
+                <div class="tianqi">
+                    <div class="tips">
+                        <h2>监测说明:
+                            <p> 本系统实现长江沿岸区域水质、气体到江岸环境信息的全方位实时采集、传输、存储和分析，以实现实时监管和问题预报预警、辅助决策，形成联动治水新格局。这对于长江流域的综合治理具有重要意义。
+                            </p>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- 科普模块 -->
+            <div class="row">
+                <!-- AQI指标 -->
+                <div class="kepu1" id="kepu1">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 推流视频显示6001 -->
+<div class="protect4" id="protect41">
+    <header>
+        <h1>生态大数据无人艇</h1>
+        <div class="showtime" id="boat"></div>
+    </header>
+    <div class="video-container">
+        <div class="video-item">
+            <video id="myVideo3" muted autoplay controls="controls"></video>
+            <div class="video-label">船上摄像头1（船头中）</div>
+        </div>
+        <div class="video-item">
+            <video id="myVideo4" muted autoplay controls="controls"></video>
+            <div class="video-label">船上摄像头2</div>
+        </div>
+
+        <script>
+            var videoDom3;
+            var player3;
+            var video_id_3 = 'myVideo3';
+            var lastDecodedFrames_3 = 3;
+            var video_name_3 = 'http://120.78.234.51:8080/live/34020000001320000005.flv';
+
+            var videoDom4;
+            var player4;
+            var video_id_4 = 'myVideo4';
+            var lastDecodedFrames_4 = 4;
+            var video_name_4 = 'http://120.78.234.51:8080/live/34020000001320000004.flv';
+
+            function listenVideo(videoDom, player, video_name, url_name, lastDecodedFrames) {
+                player.on(flvjs.Events.ERROR, (errorType, errorDetail, errorInfo) => {
+                    console.log("error");
+
+                    // 视频出错后销毁重建
+                    video_close(player);
+                    setTimeout(function () {
+                        video_start(videoDom, player, video_name, url_name, lastDecodedFrames);
+                    }, 30000);
+                });
+
+                player.on("statistics_info", function (res) {
+                    if (player.buffered && player.buffered.length) {
+                        let end = player.buffered.end(0);
+                        let diff = end - player.currentTime;
+
+                        if (diff > 60) {
+                            console.log("reboot:" + diff + "\tid:" + lastDecodedFrames);
+                            video_close(player);
+                            video_start(videoDom, player, video_name, url_name, lastDecodedFrames);
+                        }
+                    }
+                });
+            }
+
+            function video_start(videoDom, player, video_name, url_name, lastDecodedFrames) {
+                videoDom = document.getElementById(video_name);
+
+                player = flvjs.createPlayer({
+                    type: 'flv',
+                    isLive: true,
+                    url: url_name,
+                }, {
+                    autoCleanupMinBackwardDuration: true,
+                    enableWorker: false,
+                    enableStashBuffer: true,
+                    isLive: true,
+                    lazyLoad: false,
+                });
+
+                player.attachMediaElement(videoDom);
+
+                try {
+                    player.load();
+                    player.play().then(() => {
+                    }).catch(error => {
+                    });
+                    listenVideo(videoDom, player, video_name, url_name, lastDecodedFrames);
+                } catch (error) {
+                    console.log("wait...");
+                }
+
+            }
+
+            function video_close(player) {
+                player.pause();
+                player.unload();
+                player.detachMediaElement();
+                player.destroy();
+                player = null;
+            }
+
+            if (flvjs.isSupported()) {
+                video_start(videoDom3, player3, video_id_3, video_name_3, lastDecodedFrames_3);
+                video_start(videoDom4, player4, video_id_4, video_name_4, lastDecodedFrames_4);
+            } else {
+                console.log("no isSupported");
+            }
+
+            document.addEventListener('keydown', function (event) {
+            });
+
+        </script>
+    </div>
+</div>
+
+<!-- 6001 船 Vue 实例：vm2（仅定义，不在此处初始化） -->
+<script>
+    var vm2 = new Vue({
+        el: "#mainbox22",
+        data: {
+            arr1: [0, 1, 2],
+            arr2: [0, 1, 2, 3],
+            arr11: [0, 1, 2],
+            arr22: [0, 1, 2, 3],
+            arr3: [0, 1, 2, 3, 4, 5],
+            arr4: [0, 1, 2, 3, 4],
+            objList: [
+                { symbol: 'DO', name: '（溶解氧）' },
+                { symbol: 'NH3-N', name: '（氨氮）' },
+                { symbol: 'Cyanos', name: '（蓝绿藻）' },
+                { symbol: 'EC', name: '（电导率）' },
+                { symbol: 'Chl', name: '（叶绿素）' },
+                { symbol: 'Turb', name: '（浊度）' },
+                { symbol: 'PH', name: '' },
+                { symbol: '水温', name: '' },
+                { symbol: 'RH', name: '（湿度）' },
+                { symbol: 'T', name: '（气温）' },
+                { symbol: 'CO2', name: '（二氧化碳）' },
+                { symbol: 'NH3', name: '（氨气）' },
+
+            ],
+            std: [">6", "<0.5", "<16", "<1000", "<100", "<15", "=7", "常温25", "<70", "常温25", "<1000", "<0.26"],
+            unit: ["mg/L", "mg/L", "万cells/mL", "μS/cm", "μg/L", "NTU", "", "℃", "%RH", "℃", "ppm", "ppm"],
+            sensor_data2: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            state_data: [-1],
+        },
+        watch: {
+            sensor_data2: {
+                deep: true,
+                immediate: true,
+                handle() {
+                    this.levelColor()
+                }
+            },
+        },
+        methods: {
+            levelColor() {
+                const h3s = this.$refs.level2
+                const h2s = this.$refs.dealsub2
+                const h4s = this.$refs.zxc2
+                for (let i = 0; i < this.objList.length; i++) {
+                    //水质数据
+                    // DO
+                    if (i == 0) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 6) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 5 && this.sensor_data2[i] < 6) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 3 && this.sensor_data2[i] < 5) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 3) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // NH3-N
+                    if (i == 1) {
+                        console.log(h3s[i])
+                        h2s[i].innerHTML = `NH<sub>3</sub>-N<span>${this.objList[i].name}</span>`
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 0.5) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 0.5 && this.sensor_data2[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // Cyanos
+                    if (i == 2) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 16) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 16 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // 电导率
+                    if (i == 3) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 1000) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 1000 && this.sensor_data2[i] < 1500) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // 叶绿素
+                    if (i == 4) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 50) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 50 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 100 && this.sensor_data2[i] < 400) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // 浊度
+                    if (i == 5) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] <= 15) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] > 15 && this.sensor_data2[i] <= 50) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] > 50) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    //ph
+                    if (i == 6) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 6 && this.sensor_data2[i] <= 9) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] > 9 || this.sensor_data2[i] < 6) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    // 水温
+                    if (i == 7) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 25 && this.sensor_data2[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 30 && this.sensor_data2[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 35 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    //湿度
+                    if (i == 8) {
+                        console.log(h3s[i])
+                    }
+                    //气温
+                    if (i == 9) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 25 && this.sensor_data2[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 30 && this.sensor_data2[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 35 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    //co2
+                    if (i == 10) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 600) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 600 && this.sensor_data2[i] < 1000) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 1000 && this.sensor_data2[i] < 2000) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 2000 && this.sensor_data2[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                    //NH3
+                    if (i == 11) {
+                        console.log(h3s[i])
+                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 0.26) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 0.26 && this.sensor_data2[i] < 0.65) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 0.65 && this.sensor_data2[i] < 1.3) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
+                        else if (this.sensor_data2[i] >= 1.3) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
+                    }
+                }
+
+            },
+
+            InitHtml: function () {
+                data_json = {};
+                data_json['flag'] = '0';
+            },
+            StartTask: function (flag, data) {
+
+                if (flag == "1") {
+                    this.UpdateSensor(data);
+                } else if (flag == "2") {
+                    this.UpdateMainBlock(data);
+                } else if (flag == "3") {
+                    this.UpdateVisAQI(data);
+                } else if (flag == "4") {
+                    this.UpdateVispull(data);
+                } else if (flag == "0") {
+                    this.InitTasks(data);
+                }
+                this.levelColor();
+            },
+            InitTasks: function (data) {  //初始化所有的任务
+                this.sensor_data2 = data.sensor3;
+                this.levelColor();
+                console.log("****6001传感器数据****:", this.sensor_data2);
+            },
+            UpdateSensor: function (data) {  //更新传感器
+                this.sensor_data2 = data.sensor3;
+                this.levelColor();
+            },
+            UpdateMainBlock: function (data) {  //更新主界面
+                this.main_data = data;
+            },
+            gernerateId: function (index) {
+                return index;
+            },
+            test: function () {
+                console.log(this);
+            }
+        },
+        created() {
+            EventBus.$on('updateData', this.InitTasks); // 监听数据更新事件
+        }
+    });
+</script>
