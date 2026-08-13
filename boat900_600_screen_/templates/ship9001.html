@@ -38,15 +38,13 @@
                         <ul>
                             <li v-for="(item, index) in sensor_data">
                                 <div class="panel" style="padding: 0;height: 2.5rem;">
-                                    <h2 ref="dealsub" style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
-                                        {{
-                                        objList[index].symbol }}<span>{{
-                                            objList[index].name }}</span></h2>
+                                    <h2 v-html="getWaterTitle(index)" style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
+                                    </h2>
                                     <div class="chart" style="height: 1.5rem;width: 4.5rem;  margin-top: 0.1rem;">
-                                        <h3 ref="level"
+                                        <h3 :style="{color: getWaterColor(index, item)}"
                                             style="height: 0.3rem;line-height: 0.3rem;font-size: 0.35rem;  margin-top: 0.3rem;">
                                             实际值：{{item }}{{ unit[index]}}</h3>
-                                        <h4 style="font-size: 0.35rem;" ref="zxc"> 标准值：{{ std[index] }}{{unit[index]
+                                        <h4 style="font-size: 0.35rem;"> 标准值：{{ std[index] }}{{unit[index]
                                             }}</h4>
                                     </div>
                                     <div class="panel-footer"></div>
@@ -64,16 +62,17 @@
                         <ul>
                             <li v-for="(item1, index1) in sensor_data1">
                                 <div class="panel" style="padding: 0;height: 2.5rem;">
-                                    <h2 ref="dealsub1"
-                                        style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
+                                    <h2 style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
                                         {{objList1[index1].symbol }}<span>{{objList1[index1].name }}</span></h2>
                                     <div class="chart" style="height: 1.5rem;width: 4.5rem;  margin-top: 0.1rem;">
-                                        <h3 ref="level1"
+                                        <h3 :style="{color: getWeatherColor(index1, item1)}"
                                             style="height: 0.3rem;line-height: 0.3rem;font-size: 0.35rem;  margin-top: 0.3rem;">
                                             实际值：{{item1 }}{{ unit1[index1]}}</h3>
-                                        <h4 style="font-size: 0.35rem;" ref="zxc1"> 标准值：{{ std1[index1]
-                                            }}{{unit1[index1] }}
-                                        </h4>
+                                        <h4 v-if="index1 === 0"
+                                            style="font-size: 0.35rem; display: block; top: 60px;">
+                                            {{ getWindDirection(item1) }}</h4>
+                                        <h4 v-else style="font-size: 0.35rem;">
+                                            标准值：{{ std1[index1] }}{{unit1[index1] }}</h4>
                                     </div>
                                     <div class="panel-footer"></div>
                                 </div>
@@ -267,7 +266,7 @@
     </div>
 </div>
 
-<!-- 9001 船 Vue 实例：vm（仅定义，不在此处初始化；初始化调用由 index.html 统一管理） -->
+<!-- 9001 船 Vue 实例：vm（:style 声明式写法，颜色由 getWaterColor/getWeatherColor 计算函数驱动） -->
 <script>
     var vm = new Vue({
         el: "#mainbox",
@@ -323,238 +322,75 @@
                 'pm10': "主要污染物（可吸入颗粒物）",
                 'pm25': "主要污染物（细颗粒物）",
             },
-        },
-        watch: {
-            sensor_data: {
-                deep: true,
-                immediate: true,
-                handle() {
-                    this.levelColor()
-                }
-            },
-            sensor_data1: {
-                deep: true,
-                immediate: true,
-                handle() {
-                    this.levelColor1()
-                }
-            },
+            // 水质颜色阈值配置：每个传感器 index 对应一组 {t,c} 对象，从高到低匹配
+            waterColorRules: [
+                [{t:6,c:'rgba(0,190,0,0.7)'},{t:5,c:'rgba(255,240,0,0.7)'},{t:3,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}], // DO
+                [{t:0.5,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                          // NH3-N
+                [{t:10,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                          // Cd
+                [{t:16,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                          // Cyanos
+                [{t:1000,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                        // EC
+                [{t:1000,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                        // Cu
+                [{t:50,c:'rgba(0,190,0,0.7)'},{t:100,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],          // Chl
+                [{t:300,c:'rgba(0,190,0,0.7)'},{t:600,c:'rgba(255,240,0,0.7)'},{t:900,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}], // TDS
+                [{t:30,c:'rgba(0,190,0,0.7)'},{t:100,c:'rgba(255,240,0,0.7)'},{t:200,c:'rgba(255,130,0,0.7)'},{t:300,c:'rgba(255,0,0,0.7)'},{t:0,c:'rgba(165,15,75,0.7)'}], // COD
+                [{t:15,c:'rgba(0,190,0,0.7)'},{t:50,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],          // Turb
+                [{t:25,c:'rgba(0,190,0,0.7)'},{t:30,c:'rgba(255,240,0,0.7)'},{t:35,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],  // 水温
+                [{t:6,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                           // PH
+            ],
+            // 气象颜色阈值配置
+            weatherColorRules: [
+                null,                                                                                            // 风向（无颜色变化，显示方向名称）
+                [{t:5.4,c:'rgba(0,190,0,0.7)'},{t:10.7,c:'rgba(255,240,0,0.7)'},{t:13.8,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}], // 风速
+                [{t:25,c:'rgba(0,190,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],                                          // PM1
+                [{t:7.9,c:'rgba(0,190,0,0.7)'},{t:19.9,c:'rgba(255,240,0,0.7)'},{t:50,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],  // 雨量
+                [{t:100,c:'rgba(0,190,0,0.7)'},{t:1000,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],          // 光照
+                [{t:35,c:'rgba(0,190,0,0.7)'},{t:75,c:'rgba(255,240,0,0.7)'},{t:115,c:'rgba(255,130,0,0.7)'},{t:150,c:'rgba(255,0,0,0.7)'},{t:250,c:'rgba(165,15,75,0.7)'},{t:0,c:'rgba(135,15,35,0.7)'}], // PM2.5
+                null,                                                                                            // 气压（无颜色变化）
+                [{t:50,c:'rgba(0,190,0,0.7)'},{t:150,c:'rgba(255,240,0,0.7)'},{t:475,c:'rgba(255,130,0,0.7)'},{t:800,c:'rgba(255,0,0,0.7)'},{t:1600,c:'rgba(165,15,75,0.7)'},{t:0,c:'rgba(135,15,35,0.7)'}], // SO2
+                [{t:50,c:'rgba(0,190,0,0.7)'},{t:150,c:'rgba(255,240,0,0.7)'},{t:250,c:'rgba(255,130,0,0.7)'},{t:350,c:'rgba(255,0,0,0.7)'},{t:420,c:'rgba(165,15,75,0.7)'},{t:0,c:'rgba(135,15,35,0.7)'}], // PM10
+                [{t:25,c:'rgba(0,190,0,0.7)'},{t:30,c:'rgba(255,240,0,0.7)'},{t:35,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}],  // 气温
+                null,                                                                                            // 湿度（无颜色变化）
+                [{t:2,c:'rgba(0,190,0,0.7)'},{t:4,c:'rgba(255,240,0,0.7)'},{t:14,c:'rgba(255,130,0,0.7)'},{t:24,c:'rgba(255,0,0,0.7)'},{t:36,c:'rgba(165,15,75,0.7)'},{t:0,c:'rgba(135,15,35,0.7)'}], // CO
+            ],
         },
         methods: {
-            levelColor() {
-                const h3s = this.$refs.level
-                const h2s = this.$refs.dealsub
-                const h4s = this.$refs.zxc
-                for (let i = 0; i < this.objList.length; i++) {
-                    //水质数据
-                    // DO
-                    if (i == 0) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 6) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 5 && this.sensor_data[i] < 6) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 3 && this.sensor_data[i] < 5) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 3) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // NH3-N
-                    if (i == 1) {
-                        console.log(h3s[i])
-                        h2s[i].innerHTML = `NH<sub>3</sub>-N<span>${this.objList[i].name}</span>`
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 0.5) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 0.5 && this.sensor_data[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // Cd
-                    if (i == 2) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 10) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 10 && this.sensor_data[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // Cyanos
-                    if (i == 3) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 16) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 16 && this.sensor_data[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 电导率
-                    if (i == 4) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 1000) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 1000 && this.sensor_data[i] < 1500) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 铜离子
-                    if (i == 5) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 1000) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 1000 && this.sensor_data[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 叶绿素
-                    if (i == 6) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 50) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 50 && this.sensor_data[i] < 100) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 100 && this.sensor_data[i] < 400) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // TDS
-                    if (i == 7) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] <= 300) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] > 300 && this.sensor_data[i] <= 600) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] > 600 && this.sensor_data[i] <= 900) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data[i] > 900) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // COD
-                    if (i == 8) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 30) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 30 && this.sensor_data[i] < 100) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 100 && this.sensor_data[i] < 200) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 200 && this.sensor_data[i] < 300) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 300) h3s[i].style.color = 'rgba(165, 15, 75, 0.7)'
-                    }
-                    // 浊度
-                    if (i == 9) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] <= 15) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] > 15 && this.sensor_data[i] <= 50) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] > 50) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 水温
-                    if (i == 10) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 0 && this.sensor_data[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 25 && this.sensor_data[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 30 && this.sensor_data[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data[i] >= 35 && this.sensor_data[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //ph
-                    if (i == 11) {
-                        console.log(h3s[i])
-                        if (this.sensor_data[i] >= 6 && this.sensor_data[i] <= 9) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data[i] > 9 && this.sensor_data[i] < 6) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-
+            // 根据传感器 index 和数值，返回水质颜色（声明式：模板 :style 绑定此函数）
+            getWaterColor(index, value) {
+                const rule = this.waterColorRules[index]
+                if (!rule) return 'rgba(0,190,0,0.7)'
+                for (const item of rule) {
+                    if (value >= item.t) return item.c
                 }
-
-
+                return 'rgba(255,0,0,0.7)'
             },
-            levelColor1() {
-                const h3s = this.$refs.level1
-                const h2s = this.$refs.dealsub1
-                const h4s = this.$refs.zxc1
-                // 定义一个函数，用于根据风向数值获取风向名称
-                function getWindDirection(angle) {
-                    if (angle >= 337.5 || angle < 22.5) return '北风';
-                    else if (angle >= 22.5 && angle < 67.5) return '东北风';
-                    else if (angle >= 67.5 && angle < 112.5) return '东风';
-                    else if (angle >= 112.5 && angle < 157.5) return '东南风';
-                    else if (angle >= 157.5 && angle < 202.5) return '南风';
-                    else if (angle >= 202.5 && angle < 247.5) return '西南风';
-                    else if (angle >= 247.5 && angle < 292.5) return '西风';
-                    else if (angle >= 292.5 && angle < 337.5) return '西北风';
+            // 根据传感器 index 和数值，返回气象颜色
+            getWeatherColor(index, value) {
+                const rule = this.weatherColorRules[index]
+                if (!rule) return 'rgba(255,255,255,0.7)'   // 无颜色规则的返回白色
+                for (const item of rule) {
+                    if (value >= item.t) return item.c
                 }
-
-                for (let i = 0; i < this.objList1.length; i++) {
-                    //气象数据
-                    // 风向
-                    if (i == 0) {
-                        console.log(h3s[i])
-
-
-                        // h3s[i].style.position = 'relative'; h3s[i].style.top = '20px';
-                        let windDirection = getWindDirection(this.sensor_data1[i]);
-                        h4s[i].innerHTML = windDirection;
-                        h4s[i].style.display = 'block'; // 确保 h4 显示出来
-                        h4s[i].style.top = '60px'; // 确保 h4 显示出来
-
-                    }
-                    // 风速
-                    if (i == 1) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 5.4) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 5.4 && this.sensor_data1[i] < 10.7) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 10.7 && this.sensor_data1[i] < 13.8) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 13.8) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 微小颗粒物pm1
-                    if (i == 2) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 25 && this.sensor_data1[i] < 1000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //雨量
-                    if (i == 3) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 7.9) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 7.9 && this.sensor_data1[i] < 19.9) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 19.9 && this.sensor_data1[i] < 50) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 50) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //光照
-                    if (i == 4) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] <= 100) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] > 100 && this.sensor_data1[i] <= 1000) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] > 1000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //细颗粒物PM2.5
-                    if (i == 5) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 35) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 35 && this.sensor_data1[i] < 75) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 75 && this.sensor_data1[i] < 115) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 115 && this.sensor_data1[i] < 150) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 150 && this.sensor_data1[i] < 250) h3s[i].style.color = 'rgba(165, 15, 75, 0.7)'
-                        else if (this.sensor_data1[i] >= 250 && this.sensor_data1[i] < 500) h3s[i].style.color = 'rgba(135, 15, 35, 0.7)'
-                    }
-                    //气压
-                    if (i == 6) {
-                        console.log(h3s[i])
-                    }
-
-                    //so2
-                    if (i == 7) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 50) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 50 && this.sensor_data1[i] < 150) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 150 && this.sensor_data1[i] < 475) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 475 && this.sensor_data1[i] < 800) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 800 && this.sensor_data1[i] < 1600) h3s[i].style.color = 'rgba(165, 15, 75, 0.7)'
-                        else if (this.sensor_data1[i] >= 1600 && this.sensor_data1[i] < 2620) h3s[i].style.color = 'rgba(135, 15, 35, 0.7)'
-
-                    }
-                    //可吸入颗粒物PM10
-                    if (i == 8) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 50) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 50 && this.sensor_data1[i] < 150) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 150 && this.sensor_data1[i] < 250) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 250 && this.sensor_data1[i] < 350) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 350 && this.sensor_data1[i] < 420) h3s[i].style.color = 'rgba(165, 15, 75, 0.7)'
-                        else if (this.sensor_data1[i] >= 420 && this.sensor_data1[i] < 600) h3s[i].style.color = 'rgba(135, 15, 35, 0.7)'
-                    }
-                    //气温
-                    if (i == 9) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 25 && this.sensor_data1[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 30 && this.sensor_data1[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 35 && this.sensor_data1[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //湿度
-                    if (i == 10) {
-                        console.log(h3s[i])
-                    }
-                    //一氧化碳
-                    if (i == 11) {
-                        console.log(h3s[i])
-                        if (this.sensor_data1[i] >= 0 && this.sensor_data1[i] < 2) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 2 && this.sensor_data1[i] < 4) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 4 && this.sensor_data1[i] < 14) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 14 && this.sensor_data1[i] < 24) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                        else if (this.sensor_data1[i] >= 24 && this.sensor_data1[i] < 36) h3s[i].style.color = 'rgba(165, 15, 75, 0.7)'
-                        else if (this.sensor_data1[i] >= 36 && this.sensor_data1[i] < 48) h3s[i].style.color = 'rgba(135, 15, 35, 0.7)'
-
-                    }
+                return 'rgba(255,0,0,0.7)'
+            },
+            // 风向角度 → 风向名称（模板直接用 {{ getWindDirection(item1) }} 调用）
+            getWindDirection(angle) {
+                if (angle >= 337.5 || angle < 22.5) return '北风';
+                else if (angle >= 22.5 && angle < 67.5) return '东北风';
+                else if (angle >= 67.5 && angle < 112.5) return '东风';
+                else if (angle >= 112.5 && angle < 157.5) return '东南风';
+                else if (angle >= 157.5 && angle < 202.5) return '南风';
+                else if (angle >= 202.5 && angle < 247.5) return '西南风';
+                else if (angle >= 247.5 && angle < 292.5) return '西风';
+                else if (angle >= 292.5 && angle < 337.5) return '西北风';
+                return '静风';
+            },
+            // 水质标题渲染（NH3-N 需要 <sub>3</sub> 下标，其他普通渲染）
+            getWaterTitle(index) {
+                if (index === 1) {
+                    return 'NH<sub>3</sub>-N<span>' + this.objList[index].name + '</span>'
                 }
+                const item = this.objList[index]
+                return item.symbol + '<span>' + item.name + '</span>'
             },
 
             InitHtml: function () {
@@ -593,8 +429,7 @@
                 } else if (flag == "0") {
                     this.InitTasks(data);
                 }
-                this.levelColor();
-                this.levelColor1();
+                // 颜色渲染已由 :style 声明式绑定自动完成，无需手动调用 levelColor()
             },
             InitTasks: function (data) {  //初始化所有的任务
                 this.sensor_data = data.sensor;

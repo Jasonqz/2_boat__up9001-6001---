@@ -34,15 +34,13 @@
                         <ul>
                             <li v-for="(item2, index2) in sensor_data2">
                                 <div class="panel" style="padding: 0;height: 2.5rem;">
-                                    <h2 ref="dealsub2"
-                                        style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
-                                        {{objList[index2].symbol }}<span>{{
-                                            objList[index2].name }}</span></h2>
+                                    <h2 v-html="getWaterTitle(index2)" style="height: 0.5rem;line-height: 0.5rem;font-size: 0.4rem;">
+                                    </h2>
                                     <div class="chart" style="height: 1.5rem;width: 4.5rem;  margin-top: 0.1rem;">
-                                        <h3 ref="level2"
+                                        <h3 :style="{color: waterColors[index2]}"
                                             style="height: 0.3rem;line-height: 0.3rem;font-size: 0.35rem;  margin-top: 0.3rem;">
                                             实际值：{{item2}}{{ unit[index2]}}</h3>
-                                        <h4 style="font-size: 0.35rem;" ref="zxc2"> 标准值：{{ std[index2]
+                                        <h4 style="font-size: 0.35rem;"> 标准值：{{ std[index2]
                                             }}{{unit[index2]
                                             }}</h4>
                                     </div>
@@ -196,7 +194,7 @@
     </div>
 </div>
 
-<!-- 6001 船 Vue 实例：vm2（仅定义，不在此处初始化） -->
+<!-- 6001 船 Vue 实例：vm2（computed 声明式写法，颜色由 waterColors 计算属性驱动，带缓存） -->
 <script>
     var vm2 = new Vue({
         el: "#mainbox22",
@@ -226,108 +224,48 @@
             unit: ["mg/L", "mg/L", "万cells/mL", "μS/cm", "μg/L", "NTU", "", "℃", "%RH", "℃", "ppm", "ppm"],
             sensor_data2: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
             state_data: [-1],
+            // 水质颜色阈值配置：每个传感器 index 对应一组 {t,c} 对象，从高到低匹配
+            // PH(i=6) 和 湿度(i=8) 设为 null，在 computed 中特殊处理
+            waterColorRules: [
+                [{t:6,c:'rgba(0,190,0,0.7)'},{t:5,c:'rgba(255,240,0,0.7)'},{t:3,c:'rgba(255,130,0,0.7)'},{t:0,c:'rgba(255,0,0,0.7)'}], // DO
+                [{t:0.5,c:'rgba(255,0,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}],                                          // NH3-N
+                [{t:16,c:'rgba(255,0,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}],                                          // Cyanos
+                [{t:1000,c:'rgba(255,0,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}],                                        // EC
+                [{t:100,c:'rgba(255,0,0,0.7)'},{t:50,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}],          // Chl
+                [{t:50,c:'rgba(255,0,0,0.7)'},{t:15,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}],            // Turb
+                null,                                                                                                // PH（区间判断，computed 特殊处理）
+                [{t:35,c:'rgba(255,0,0,0.7)'},{t:30,c:'rgba(255,130,0,0.7)'},{t:25,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}], // 水温
+                null,                                                                                                // 湿度（无颜色变化）
+                [{t:35,c:'rgba(255,0,0,0.7)'},{t:30,c:'rgba(255,130,0,0.7)'},{t:25,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}], // 气温
+                [{t:2000,c:'rgba(255,0,0,0.7)'},{t:1000,c:'rgba(255,130,0,0.7)'},{t:600,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}], // CO2
+                [{t:1.3,c:'rgba(255,0,0,0.7)'},{t:0.65,c:'rgba(255,130,0,0.7)'},{t:0.26,c:'rgba(255,240,0,0.7)'},{t:0,c:'rgba(0,190,0,0.7)'}], // NH3
+            ],
         },
-        watch: {
-            sensor_data2: {
-                deep: true,
-                immediate: true,
-                handle() {
-                    this.levelColor()
-                }
-            },
+        // computed 计算属性：sensor_data2 变化时自动重算，带缓存，模板多次读取只算一次
+        computed: {
+            waterColors() {
+                return this.sensor_data2.map((v, i) => {
+                    // PH 特殊处理：6-9 绿，其他红
+                    if (i === 6) {
+                        return (v >= 6 && v <= 9) ? 'rgba(0,190,0,0.7)' : 'rgba(255,0,0,0.7)'
+                    }
+                    const rule = this.waterColorRules[i]
+                    if (!rule) return 'rgba(255,255,255,0.7)'   // 无颜色规则的返回白色
+                    for (const item of rule) {
+                        if (v >= item.t) return item.c
+                    }
+                    return 'rgba(255,0,0,0.7)'
+                })
+            }
         },
         methods: {
-            levelColor() {
-                const h3s = this.$refs.level2
-                const h2s = this.$refs.dealsub2
-                const h4s = this.$refs.zxc2
-                for (let i = 0; i < this.objList.length; i++) {
-                    //水质数据
-                    // DO
-                    if (i == 0) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 6) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 5 && this.sensor_data2[i] < 6) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 3 && this.sensor_data2[i] < 5) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 3) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // NH3-N
-                    if (i == 1) {
-                        console.log(h3s[i])
-                        h2s[i].innerHTML = `NH<sub>3</sub>-N<span>${this.objList[i].name}</span>`
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 0.5) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 0.5 && this.sensor_data2[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // Cyanos
-                    if (i == 2) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 16) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 16 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 电导率
-                    if (i == 3) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 1000) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 1000 && this.sensor_data2[i] < 1500) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 叶绿素
-                    if (i == 4) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 50) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 50 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 100 && this.sensor_data2[i] < 400) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 浊度
-                    if (i == 5) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] <= 15) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] > 15 && this.sensor_data2[i] <= 50) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] > 50) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //ph
-                    if (i == 6) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 6 && this.sensor_data2[i] <= 9) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] > 9 || this.sensor_data2[i] < 6) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    // 水温
-                    if (i == 7) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 25 && this.sensor_data2[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 30 && this.sensor_data2[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 35 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //湿度
-                    if (i == 8) {
-                        console.log(h3s[i])
-                    }
-                    //气温
-                    if (i == 9) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 25) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 25 && this.sensor_data2[i] < 30) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 30 && this.sensor_data2[i] < 35) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 35 && this.sensor_data2[i] < 100) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //co2
-                    if (i == 10) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 600) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 600 && this.sensor_data2[i] < 1000) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 1000 && this.sensor_data2[i] < 2000) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 2000 && this.sensor_data2[i] < 10000) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
-                    //NH3
-                    if (i == 11) {
-                        console.log(h3s[i])
-                        if (this.sensor_data2[i] >= 0 && this.sensor_data2[i] < 0.26) h3s[i].style.color = 'rgba(0, 190, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 0.26 && this.sensor_data2[i] < 0.65) h3s[i].style.color = 'rgba(255, 240, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 0.65 && this.sensor_data2[i] < 1.3) h3s[i].style.color = 'rgba(255, 130, 0, 0.7)'
-                        else if (this.sensor_data2[i] >= 1.3) h3s[i].style.color = 'rgba(255, 0, 0, 0.7)'
-                    }
+            // 水质标题渲染（NH3-N 需要 <sub>3</sub> 下标）
+            getWaterTitle(index) {
+                if (index === 1) {
+                    return 'NH<sub>3</sub>-N<span>' + this.objList[index].name + '</span>'
                 }
-
+                const item = this.objList[index]
+                return item.symbol + '<span>' + item.name + '</span>'
             },
 
             InitHtml: function () {
@@ -347,16 +285,14 @@
                 } else if (flag == "0") {
                     this.InitTasks(data);
                 }
-                this.levelColor();
+                // 颜色渲染已由 computed waterColors 自动完成，无需手动调用 levelColor()
             },
             InitTasks: function (data) {  //初始化所有的任务
                 this.sensor_data2 = data.sensor3;
-                this.levelColor();
                 console.log("****6001传感器数据****:", this.sensor_data2);
             },
             UpdateSensor: function (data) {  //更新传感器
                 this.sensor_data2 = data.sensor3;
-                this.levelColor();
             },
             UpdateMainBlock: function (data) {  //更新主界面
                 this.main_data = data;

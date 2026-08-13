@@ -40,11 +40,9 @@
          确保 vm1/vm2 在 created 中已通过 EventBus.$on 注册了监听，
          再调用 vm.InitHtml() 发出 EventBus.$emit('updateData')，避免首次数据丢失 ============ -->
     <script>
+        // 颜色渲染已由 :style 声明式绑定自动完成，无需手动调用 levelColor()
         vm.InitHtml();            // vm 发第一次 HTTP 请求，拉取全量数据并广播给 vm1 / vm2
-        vm.levelColor();          // 9001 船：立即按数据渲染颜色
-        vm.levelColor1();
         vm2.InitHtml();           // 6001 船：data_json 占位初始化（数据由 EventBus 提供）
-        vm2.levelColor();
         vm1.InitHtml();           // 大气：data_json 占位初始化（数据由 EventBus 提供）
 
         // 每 6 秒让 vm 再拉一次数据并通过 EventBus 广播，3 个实例同步刷新
